@@ -4,7 +4,7 @@ define("BASE_DIR",'/tmp');
 
 header("Content-Type:text/html;charset=utf-8");
 session_start();
-$flag = "flag{123456}";
+$flag = "请在真实环境中尝试获取这个flag";
 class Data_db extends SQLite3
 {
     function __construct()
