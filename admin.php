@@ -7,8 +7,9 @@ if(isset($_POST['flag'])&& isset($_POST['code'])) {
         header('Location: admin.php');
         exit;
     }
-    if(md5($_POST['code'],0, 5)!== $_SESSION['admin_code'])
+    if(substr(md5($_POST['code']),0, 6)!== $_SESSION['admin_code'])
     {
+        unset($_SESSION['admin_code']);
         header('Location: admin.php');
         exit;
     }
@@ -40,9 +41,9 @@ if(isset($_POST['flag'])&& isset($_POST['code'])) {
 
 else
 {
-    $code = rand_s(3);
-    $md5c = substr(md5($code),0,5);
-    $c_view = "substr(md5(?), 0, 5) === $md5c";
+    $code = rand_s(6);
+    $md5c = substr(md5($code),0,6);
+    $c_view = "substr(md5(?), 0, 6) === $md5c";
     $_SESSION['admin_code'] = $md5c;
 
 ?>
